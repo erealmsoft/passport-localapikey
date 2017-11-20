@@ -1,17 +1,17 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var localapikey = require('passport-localapikey');
+var remoteapikey = require('passport-remoteapikey');
 
-vows.describe('passport-localapikey').addBatch({
+vows.describe('passport-remoteapikey').addBatch({
   
   'module': {
     'should report a version': function (x) {
-      assert.isString(localapikey.version);
+      assert.isString(remoteapikey.version);
     },
     
     'should export BadRequestError': function (x) {
-      assert.isFunction(localapikey.BadRequestError);
+      assert.isFunction(remoteapikey.BadRequestError);
     },
   },
   

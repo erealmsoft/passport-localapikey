@@ -7,11 +7,11 @@ test:
 
 docs: docs/api.html
 
-docs/api.html: lib/passport-localapikey/*.js
+docs/api.html: lib/passport-remoteapikey/*.js
 	dox \
-		--title Passport-Localapikey \
-		--desc "Local apikey authentication strategy for Passport" \
-		$(shell find lib/passport-localapikey/* -type f) > $@
+		--title Passport-Remoteapikey \
+		--desc "Remote apikey authentication strategy for Passport" \
+		$(shell find lib/passport-remoteapikey/* -type f) > $@
 
 docclean:
 	rm -f docs/*.{1,html}

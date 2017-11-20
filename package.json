@@ -1,16 +1,16 @@
 {
-  "name": "passport-localapikey",
+  "name": "passport-remoteapikey",
   "version": "0.0.4",
-  "description": "Local api key authentication strategy for Passport.",
+  "description": "Remote api key authentication strategy for Passport.",
   "author": { "name": "Sudhakar Mani", "email": "mail4sudhakar@gmail.com", "url": "http://www.sudhakarmani.com/" },
   "repository": {
     "type": "git",
-    "url": "git://github.com/cholalabs/passport-localapikey.git"
+    "url": "git://github.com/cholalabs/passport-remoteapikey.git"
   },
   "bugs": {
-    "url": "https://github.com/cholalabs/passport-localapikey/issues"
+    "url": "https://github.com/cholalabs/passport-remoteapikey/issues"
   },
-  "main": "./lib/passport-localapikey",
+  "main": "./lib/passport-remoteapikey",
   "dependencies": {
     "pkginfo": "0.2.x",
     "passport": "~0.1.1"
@@ -26,5 +26,5 @@
     "type": "MIT",
     "url": "http://www.opensource.org/licenses/MIT"
   } ],
-  "keywords": ["passport", "passport apikey","local apikey", "auth", "authn", "authentication"]
+  "keywords": ["passport", "passport apikey","remote apikey", "auth", "authn", "authentication"]
 }

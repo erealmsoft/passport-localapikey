@@ -2,7 +2,7 @@ var express = require('express')
   , passport = require('passport')
   , flash = require('connect-flash')
   , util = require('util')
-  , LocalStrategy = require('passport-localapikey').Strategy;
+  , RemoteStrategy = require('passport-remoteapikey').Strategy;
   
 
 var users = [
@@ -59,12 +59,12 @@ passport.deserializeUser(function(id, done) {
 });
 
 
-// Use the LocalStrategy within Passport.
+// Use the RemoteStrategy within Passport.
 //   Strategies in passport require a `verify` function, which accept
 //   credentials (in this case, a username and password), and invoke a callback
 //   with a user object.  In the real world, this would query a database;
 //   however, in this example we are using a baked-in set of users.
-passport.use(new LocalStrategy(
+passport.use(new RemoteStrategy(
   function(apikey, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
@@ -92,7 +92,7 @@ var app = express();
 app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  app.engine('ejs', require('ejs-locals'));
+  app.engine('ejs', require('ejs-remotes'));
   app.use(express.logger());
   app.use(express.cookieParser());
   app.use(express.bodyParser());
@@ -128,7 +128,7 @@ app.get('/api/unauthorized', function(req, res){
 //
 //   curl -v -d "apikey=asdasjsdgfjkjhg" http://127.0.0.1:3000/api/authenticate
 app.post('/api/authenticate', 
-  passport.authenticate('localapikey', { failureRedirect: '/api/unauthorized', failureFlash: true }),
+  passport.authenticate('remoteapikey', { failureRedirect: '/api/unauthorized', failureFlash: true }),
   function(req, res) {
      res.json({ message: "Authenticated" })
   });
@@ -138,7 +138,7 @@ app.post('/api/authenticate',
 //   acheive the same functionality.
 /*
 app.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
+  passport.authenticate('remote', function(err, user, info) {
     if (err) { return next(err) }
     if (!user) {
       req.flash('error', info.message);

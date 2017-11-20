@@ -1,25 +1,25 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var LocalAPIKeyStrategy = require('passport-localapikey/strategy');
-var BadRequestError = require('passport-localapikey/errors/badrequesterror');
+var RemoteAPIKeyStrategy = require('passport-remoteapikey/strategy');
+var BadRequestError = require('passport-remoteapikey/errors/badrequesterror');
 
 
-vows.describe('LocalAPIKeyStrategy').addBatch({
+vows.describe('RemoteAPIKeyStrategy').addBatch({
 
   'strategy': {
     topic: function() {
-      return new LocalAPIKeyStrategy(function(){});
+      return new RemoteAPIKeyStrategy(function(){});
     },
 
     'should be named session': function (strategy) {
-      assert.equal(strategy.name, 'localapikey');
+      assert.equal(strategy.name, 'remoteapikey');
     },
   },
 
   'strategy handling a request': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -58,7 +58,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request with credentials in query': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -97,7 +97,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request with credentials in header': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -135,7 +135,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request with req argument to callback': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy({passReqToCallback: true}, function(){});
+      var strategy = new RemoteAPIKeyStrategy({passReqToCallback: true}, function(){});
       return strategy;
     },
 
@@ -178,7 +178,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request with parameter options set to plain string': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy({apikeyField: 'apikey'}, function(){});
+      var strategy = new RemoteAPIKeyStrategy({apikeyField: 'apikey'}, function(){});
       return strategy;
     },
 
@@ -218,7 +218,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
  
   'strategy handling a request with additional info': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -260,7 +260,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request that is not verified': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -296,7 +296,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request that is not verified with additional info': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -335,7 +335,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request that encounters an error during verification': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -376,7 +376,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request without a body': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -406,7 +406,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request with a body, but no apikey': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -437,7 +437,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy handling a request with a body, but no apikey, and badRequestMessage option': {
     topic: function() {
-      var strategy = new LocalAPIKeyStrategy(function(){});
+      var strategy = new RemoteAPIKeyStrategy(function(){});
       return strategy;
     },
 
@@ -471,7 +471,7 @@ vows.describe('LocalAPIKeyStrategy').addBatch({
 
   'strategy constructed without a verify callback': {
     'should throw an error': function (strategy) {
-      assert.throws(function() { new LocalAPIKeyStrategy() });
+      assert.throws(function() { new RemoteAPIKeyStrategy() });
     },
   },
 
